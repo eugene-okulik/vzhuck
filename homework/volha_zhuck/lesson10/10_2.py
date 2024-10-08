@@ -4,7 +4,7 @@ def repeat_me(func):
         count = arg[1]
         for i in range(count):
             func(text)
-        return 
+        return
     return wrapper
 
 
