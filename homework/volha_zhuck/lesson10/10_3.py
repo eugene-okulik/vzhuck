@@ -1,6 +1,4 @@
 def decorator_calc(func):
-
-
     def wrapper(*arg):
         first = arg[0]
         second = arg[1]
