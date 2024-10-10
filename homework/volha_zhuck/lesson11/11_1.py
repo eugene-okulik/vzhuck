@@ -9,6 +9,7 @@ class Book:
     pages = 0
     ISBN = ''
     reserv = False
+
     def __init__(self, material_pages, text, book_name, author, pages, reserv=False) -> None:
         self.material_pages = material_pages
         self.text = text
@@ -17,18 +18,19 @@ class Book:
         self.pages = pages
         self.reserv = reserv
         pass
+
     @abstractmethod
     def printBook(self):
         if self.reserv:
             print(
-            f"Название: {self.book_name}, Автор: {self.author}, "
-            f"страниц: {self.pages}, материал: {self.material_pages}, "
-            "зерезервирована"
+                f"Название: {self.book_name}, Автор: {self.author}, "
+                f"страниц: {self.pages}, материал: {self.material_pages}, "
+                "зерезервирована"
         )
         else:
             print(
-            f"Название: {self.book_name}, Автор: {self.author}, "
-            f"страниц: {self.pages}, материал: {self.material_pages}"
+                f"Название: {self.book_name}, Автор: {self.author}, "
+                f"страниц: {self.pages}, материал: {self.material_pages}"
         )
 
 
@@ -36,22 +38,24 @@ class SchoolBooks(Book):
     lesson = ''
     grade = ''
     practice = True
+
     def __init__(self, material_pages, text, book_name, author, pages, lesson, grade, practice, reserv=False) -> None:
         super().__init__(material_pages, text, book_name, author, pages, reserv)
         self.lesson = lesson
         self.grade = grade
         self.practice = practice
+
     def printBook(self):
         if self.reserv:
             print(
-            f"Название: {self.book_name}, Автор: {self.author}, "
-            f"страниц: {self.pages}, предмет: {self.lesson}, класс: {self.grade}, "
-            "зерезервирована"
+                f"Название: {self.book_name}, Автор: {self.author}, "
+                f"страниц: {self.pages}, предмет: {self.lesson}, класс: {self.grade}, "
+                "зерезервирована"
         )
         else:
             print(
-            f"Название: {self.book_name}, Автор: {self.author}, "
-            f"страниц: {self.pages}, предмет: {self.lesson}, класс: {self.grade}"
+                f"Название: {self.book_name}, Автор: {self.author}, "
+                f"страниц: {self.pages}, предмет: {self.lesson}, класс: {self.grade}"
         )
 
 
