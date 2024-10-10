@@ -26,12 +26,12 @@ class Book:
                 f"Название: {self.book_name}, Автор: {self.author}, "
                 f"страниц: {self.pages}, материал: {self.material_pages}, "
                 "зерезервирована"
-        )
+            )
         else:
             print(
                 f"Название: {self.book_name}, Автор: {self.author}, "
                 f"страниц: {self.pages}, материал: {self.material_pages}"
-        )
+            )
 
 
 class SchoolBooks(Book):
@@ -51,12 +51,12 @@ class SchoolBooks(Book):
                 f"Название: {self.book_name}, Автор: {self.author}, "
                 f"страниц: {self.pages}, предмет: {self.lesson}, класс: {self.grade}, "
                 "зерезервирована"
-        )
+            )
         else:
             print(
                 f"Название: {self.book_name}, Автор: {self.author}, "
                 f"страниц: {self.pages}, предмет: {self.lesson}, класс: {self.grade}"
-        )
+            )
 
 
 book1 = Book('бумага', True, 'Идиот', 'Достоевский', 500)
