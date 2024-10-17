@@ -32,7 +32,7 @@ class Sunflower(Flower):
 
     def __init__(self, color, price, lenght, time_of_living, freshness=True) -> None:
         super().__init__('Sunflower', color, price, lenght, time_of_living, freshness)
-   
+
 
 class Tulip(Flower):
 
@@ -58,7 +58,7 @@ class Bouquet:
     def printBouquet(self):
         for flower in self.flowers:
             flower.printFlower()
-    
+
     def avgLifetime(self):
         if len(self.flowers) == 0:
             return 0
@@ -67,13 +67,13 @@ class Bouquet:
             sum += flower.time_of_living
         avg = sum / len(self.flowers)
         return int(avg)
-    
+
     def priceBouquet(self):
         price = 0
         for flower in self.flowers:
             price += flower.price
         return price
-    
+
     def searchFlowers(self, color):
         for flower in self.flowers:
             if color == flower.color:
