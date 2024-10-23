@@ -1,0 +1,34 @@
+insert into students (name, second_name) values ('Fredrick', 'Backman');  
+insert into books (title, taken_by_student_id) values ('My Grandmother asked me..', '3469');
+insert into books (title, taken_by_student_id) values ('A Man called Ove', '3469');
+insert into books (title, taken_by_student_id) values ('Britt-Marie', '3469');
+insert into `st-onl`.groups (title, start_date, end_date) values ('Swedish', 'October-24', 'November-24'); 
+update students set group_id = '2163' WHERE id = '3469'; 
+insert into subjets (title) values ('Reading');
+insert into subjets (title) values ('Writing');
+insert into lessons (title, subject_id) values ('Writing Lesson 1', '3196');
+insert into lessons (title, subject_id) values ('Writing Lesson 2', '3196');
+insert into lessons (title, subject_id) values ('Reading Lesson 1', '3195');
+insert into lessons (title, subject_id) values ('Reading Lesson 2', '3195');
+insert into marks (value, lesson_id, student_id) values ('9', '6545', '3469');
+insert into marks (value, lesson_id, student_id) values ('10', '6546', '3469');
+insert into marks (value, lesson_id, student_id) values ('7', '6543', '3469');
+insert into marks (value, lesson_id, student_id) values ('3', '6544', '3469');
+SELECT value FROM `st-onl`.marks where student_id = '3469';
+SELECT title FROM books where taken_by_student_id = '3469';
+SELECT * 
+FROM students s 
+left JOIN books b ON b.taken_by_student_id = s.id 
+left JOIN marks m ON m.student_id = s.id 
+left join lessons l ON l.id = m.lesson_id
+left join subjets sub ON sub.id = l.subject_id
+left JOIN `st-onl`.groups on `st-onl`.groups.id = s.group_id
+WHERE s.id = '3469'
+
+
+
+
+
+
+
+
