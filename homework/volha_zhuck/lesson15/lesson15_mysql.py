@@ -11,7 +11,7 @@ db = mysql.connect(
 cursor = db.cursor(dictionary=True)
 cursor.execute(
     "INSERT INTO students (name, second_name) VALUES ('Fredrick', 'Backman')"
-    )
+)
 
 student_id = cursor.lastrowid
 insert_query = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
@@ -31,7 +31,7 @@ cursor.execute(
 group_id = cursor.lastrowid
 cursor.execute(
     "UPDATE students SET group_id = %s WHERE id = %s", (group_id, student_id)
-    )
+)
 
 cursor.execute("INSERT INTO subjets (title) VALUES ('Reading')")
 reading_id = cursor.lastrowid
@@ -39,22 +39,22 @@ cursor.execute("INSERT INTO subjets (title) VALUES ('Writing')")
 writing_id = cursor.lastrowid
 cursor.execute(
     "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)", ('Writing Lesson 1', writing_id)
-    )
+)
 
 w_lesson1_id = cursor.lastrowid
 cursor.execute(
     "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)", ('Writing Lesson 2', writing_id)
-    )
+)
 
 w_lesson2_id = cursor.lastrowid
 cursor.execute(
     "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)", ('Reading Lesson 1', reading_id)
-    )
+)
 
 r_lesson1_id = cursor.lastrowid
 cursor.execute(
     "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)", ('Reading Lesson 2', reading_id)
-    )
+)
 
 r_lesson2_id = cursor.lastrowid
 insert_query = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
