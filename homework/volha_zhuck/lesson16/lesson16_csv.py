@@ -34,18 +34,19 @@ for row in data:
             left join lessons l ON l.id = m.lesson_id
             left join subjets sub ON sub.id = l.subject_id
             left JOIN `st-onl`.groups on `st-onl`.groups.id = s.group_id
-            WHERE s.name = '{name}' and s.second_name = '{second_name}'
-            and b.title = '{book_title}' and sub.title = '{subject_title}'
-            and l.title = '{lesson_title}' and m.value = '{mark_value}'
+            WHERE s.name = %s and s.second_name = %s
+            and b.title = %s and sub.title = %s
+            and l.title = %s and m.value = %s
             '''
-    cursor.execute(select_query)
+    parameters = (name, second_name, book_title, subject_title, lesson_title, mark_value)
+    cursor.execute(select_query, parameters)
     data = cursor.fetchall()
     if len(data) > 0:
         print(
-    f'Name: {name}, '
-    f'Second name: {second_name}, '
-    f'Book: {book_title}, '
-    f'Subject: {subject_title}, '
-    f'Lesson: {lesson_title}, '
-    f'Mark: {mark_value}'
-)
+            f'Name: {name}, '
+            f'Second name: {second_name}, '
+            f'Book: {book_title}, '
+            f'Subject: {subject_title}, '
+            f'Lesson: {lesson_title}, '
+            f'Mark: {mark_value}'
+        )
