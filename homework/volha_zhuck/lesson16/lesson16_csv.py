@@ -26,7 +26,7 @@ for row in data:
     name, second_name, group_title, book_title, \
         subject_title, lesson_title, mark_value = row
     cursor = db.cursor(dictionary=True)
-    select_query = f'''
+    select_query = '''
             SELECT *
             FROM students s
             left JOIN books b ON b.taken_by_student_id = s.id
