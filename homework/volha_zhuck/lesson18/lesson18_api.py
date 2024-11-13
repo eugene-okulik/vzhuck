@@ -29,7 +29,7 @@ def new_post():
     response = requests.post(
         'http://167.172.172.115:52353/object',
         json=body, headers=headers
-        )
+    )
     print(response)
     return response.json()['id']
 
@@ -49,7 +49,7 @@ def put_a_post():
     response = requests.put(
         f'http://167.172.172.115:52353/object/{id}',
         json=body, headers=headers
-        )
+    )
     print(response)
     return response.json()
 
@@ -68,7 +68,7 @@ def patch_a_post():
     response = requests.patch(
         f'http://167.172.172.115:52353/object/{id}',
         json=body, headers=headers
-        )
+    )
     print(response)
     return response.json()
 
