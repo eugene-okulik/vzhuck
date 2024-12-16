@@ -3,23 +3,22 @@ import allure
 from endpoints.endpoint import Endpoint
 
 
-class UpdatePost(Endpoint):
+class PatchPost(Endpoint):
 
     response = None
     json = None
 
-    @allure.step('Update a post')
-    def update_post(self, post_id, body, headers=None):
+    @allure.step('Patch a post')
+    def patch_post(self, post_id, body, headers=None):
         headers = headers if headers else self.headers
-        self.response = requests.put(
+        self.response = requests.patch(
             f'{self.url}/{post_id}',
             json=body,
             headers=headers
         )
-        self.json = self.response.json()
         return self.response
 
-    @allure.step('Check updated data')
-    def check_updated_data(self, key, expected_value):
+    @allure.step('Check patched data')
+    def check_patched_data(self, key, expected_value):
         response_json = self.response.json()
         assert response_json['data'][key] == expected_value

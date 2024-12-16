@@ -2,7 +2,12 @@ import requests
 import allure
 from endpoints.endpoint import Endpoint
 
+
 class CreatePost(Endpoint):
+
+    response = None
+    json = None
+    post_id = None
 
     @allure.step('Create new post')
     def new_post(self, body, headers=None):
@@ -13,5 +18,5 @@ class CreatePost(Endpoint):
             headers=headers
         )
         self.json = self.response.json()
+        self.post_id = self.json['id']
         return self.response
-
