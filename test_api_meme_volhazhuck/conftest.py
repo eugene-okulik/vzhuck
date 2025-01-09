@@ -39,9 +39,7 @@ def update_meme_data(get_token):
 @pytest.fixture(scope='session', autouse=True)
 def get_token():
     url = 'http://167.172.172.115:52355/authorize'
-    body = {
-        "name": "olga"
-        }
+    body = {"name": "olga"}
     response = requests.post(url, json=body)
     response = response.json()
     token_id = response['token']
