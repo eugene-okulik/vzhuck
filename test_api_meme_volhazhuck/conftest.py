@@ -86,14 +86,14 @@ def new_meme_id(get_token):
         "url": "https://encrypted-tbn0"
     }
     response = requests.post(
-            'http://167.172.172.115:52355/meme',
-            json=body, headers={
-                'Content-Type': 'application/json',
-                'Authorization': get_token}
-        )
+        'http://167.172.172.115:52355/meme',
+        json=body, headers={
+            'Content-Type': 'application/json',
+            'Authorization': get_token}
+    )
     meme_id = response.json()['id']
     yield meme_id
     requests.delete(
         f'http://167.172.172.115:52355/meme/{meme_id}',
         headers={'Authorization': get_token}
-        )
+    )

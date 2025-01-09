@@ -37,8 +37,8 @@ def test_create_new_meme(create_meme_endpoint, data, get_meme_endpoint):
 
 
 def test_put_a_post(
-        new_meme_id, get_meme_endpoint, update_meme_endpoint, update_meme_data
-        ):
+        new_meme_id, get_meme_endpoint,
+        update_meme_endpoint, update_meme_data):
     updated_data = update_meme_data(new_meme_id)
     get_meme_endpoint.get_meme(new_meme_id)
     get_meme_endpoint.check_status_200()
