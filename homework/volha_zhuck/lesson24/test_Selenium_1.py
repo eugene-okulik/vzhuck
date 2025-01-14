@@ -34,9 +34,9 @@ def test_2_submit_form(driver):
         "lastName": "Marley",
         "userEmail": "bob@gh.com",
         "userNumber": "1234567890",
-        "subjectsInput": "subject info",
         "currentAddress": "12 Privet Drive"
     }
+    subjects_input = "English"
     for field_id, value in form_data.items():
         driver.find_element(By.ID, field_id).send_keys(value)
     driver.execute_script("window.scrollBy(0, 300);")
@@ -67,6 +67,17 @@ def test_2_submit_form(driver):
     )
     date_element.click()
     driver.find_element(By.CLASS_NAME, 'css-19bqh2r').click()
+    driver.find_element(By.XPATH, "//label[text()='Sports']").click()
+    subject_input = driver.find_element(By.ID, "subjectsInput")
+    subject_input.send_keys(subjects_input)
+    subject_option = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((
+            By.XPATH,
+            f"//div[contains(@class, 'subjects-auto-complete__option') "
+            f"and text()='English']"
+            ))
+    )
+    subject_option.click()
     driver.execute_script("window.scrollBy(0, 300);")
     button = driver.find_element(By.ID, 'submit')
     button.click()
@@ -75,20 +86,18 @@ def test_2_submit_form(driver):
     headers = table.find_elements(By.CSS_SELECTOR, "thead th")
     header_text = [header.text for header in headers]
     print(" | ".join(header_text))
-
     for row in rows:
         cells = row.find_elements(By.TAG_NAME, "td")
         cell_text = [cell.text for cell in cells]
         print(" | ".join(cell_text))
-
     expected_table_data = {
         "Student Name": f"{form_data['firstName']} {form_data['lastName']}",
         "Student Email": form_data['userEmail'],
         "Gender": "Male",
         "Mobile": form_data['userNumber'],
         "Date of Birth": "20 February,1990",
-        "Subjects": form_data['subjectsInput'],
-        "Hobbies": "",
+        "Subjects": subjects_input,
+        "Hobbies": "Sports",
         "Picture": "",
         "Address": form_data['currentAddress'],
         "State and City": "Haryana Karnal"
