@@ -73,9 +73,9 @@ def test_2_submit_form(driver):
     subject_option = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((
             By.XPATH,
-            f"//div[contains(@class, 'subjects-auto-complete__option') "
-            f"and text()='English']"
-            ))
+            "//div[contains(@class, 'subjects-auto-complete__option') "
+            "and text()='English']"
+        ))
     )
     subject_option.click()
     driver.execute_script("window.scrollBy(0, 300);")
