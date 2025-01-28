@@ -21,7 +21,7 @@ def test_add_item_in_cart(driver):
     first_tab = driver.current_window_handle
     top_left_item = driver.find_element(
         By.XPATH, "(//img[@class='card-img-top img-fluid'])[1]"
-        )
+    )
     ActionChains(driver).key_down(Keys.CONTROL) \
         .click(top_left_item) \
         .key_up(Keys.CONTROL) \
@@ -29,11 +29,11 @@ def test_add_item_in_cart(driver):
     driver.switch_to.window(driver.window_handles[-1])
     add_to_cart_button = driver.find_element(
         By.XPATH, "//a[text()='Add to cart']"
-        )
+    )
     add_to_cart_button.click()
     WebDriverWait(driver, 10).until(
-            EC.alert_is_present()
-        )
+        EC.alert_is_present()
+    )
     alert = driver.switch_to.alert
     print("Product added", alert.text)
     alert.accept()
@@ -44,7 +44,7 @@ def test_add_item_in_cart(driver):
     cart_item = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((
             By.XPATH, "//td[text()='Samsung galaxy s6']"
-            ))
+        ))
     )
     assert cart_item.text == 'Samsung galaxy s6', "ITEM NOT FOUND"
 
@@ -55,7 +55,7 @@ def test_add_bag_to_compare(driver):
     bag = driver.find_element(By.XPATH, "//div[@class='product-item-info'][1]")
     add_to_compare = driver.find_element(
         By.XPATH, "//a[@class='action tocompare' and @title='Add to Compare']"
-        )
+    )
     actions = ActionChains(driver)
     actions.move_to_element(bag)
     actions.move_to_element(add_to_compare)
