@@ -29,8 +29,8 @@ def test_demoqa(page: Page):
     address.fill('New York')
     date_input = page.locator('#dateOfBirthInput')
     date_input.click()
-    year_selector = page.locator('.react-datepicker__year-select')  
-    year_selector.select_option(label="2000") 
+    year_selector = page.locator('.react-datepicker__year-select')
+    year_selector.select_option(label="2000")
     month_selector = page.locator('.react-datepicker__month-select')
     month_selector.select_option(label="January")
     page.locator('.react-datepicker__day.react-datepicker__day--025').click()
@@ -39,7 +39,7 @@ def test_demoqa(page: Page):
     subject.press('Enter')
     state = page.locator(
         'div.css-1wa3eu0-placeholder', has_text='Select State'
-        )
+    )
     state.click()
     state_option = page.locator('text=Uttar Pradesh')
     state_option.click()
