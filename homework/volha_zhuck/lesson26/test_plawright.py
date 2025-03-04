@@ -1,0 +1,51 @@
+from playwright.sync_api import Page, expect
+
+
+def test_herokuapp(page: Page):
+    page.goto('https://the-internet.herokuapp.com/')
+    link = page.get_by_role('link', name='Form Authentication')
+    link.click()
+    username = page.get_by_role('textbox', name='username')
+    username.fill('Bob')
+    password = page.get_by_role('textbox', name='password')
+    password.fill('passw123!@#')
+    login = page.get_by_role('button', name='Login')
+    login.click()
+
+
+def test_demoqa(page: Page):
+    page.goto('https://demoqa.com/automation-practice-form')
+    first_name = page.get_by_role('textbox', name='First Name')
+    first_name.fill('Bob')
+    last_name = page.get_by_role('textbox', name='Last Name')
+    last_name.fill('Marley')
+    gender = page.locator('label[for="gender-radio-1"]')
+    gender.click()
+    mobile = page.get_by_role('textbox', name='Mobile Number')
+    mobile.fill('1234567890')
+    hobbies = page.locator('label[for="hobbies-checkbox-2"]')
+    hobbies.click()
+    address = page.get_by_role('textbox', name='Current Address')
+    address.fill('New York')
+    date_input = page.locator('#dateOfBirthInput')
+    date_input.click()
+    year_selector = page.locator('.react-datepicker__year-select')
+    year_selector.select_option(label="2000")
+    month_selector = page.locator('.react-datepicker__month-select')
+    month_selector.select_option(label="January")
+    page.locator('.react-datepicker__day.react-datepicker__day--025').click()
+    subject = page.locator('#subjectsInput')
+    subject.fill('English')
+    subject.press('Enter')
+    state = page.locator(
+        'div.css-1wa3eu0-placeholder', has_text='Select State'
+    )
+    state.click()
+    state_option = page.locator('text=Uttar Pradesh')
+    state_option.click()
+    city = page.locator('div.css-1wa3eu0-placeholder', has_text='Select City')
+    city.click()
+    city_option = page.locator('text=Lucknow')
+    city_option.click()
+    submit = page.get_by_role('button', name='Submit')
+    submit.click()
