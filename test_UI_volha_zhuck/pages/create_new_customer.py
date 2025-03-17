@@ -11,8 +11,8 @@ class CreateNewCustomer(BasePage):
         )
 
     def fill_create_account_form(
-                self, firstname, lastname, email, password, password_confirmation
-            ):
+        self, firstname, lastname, email, password, password_confirmation
+    ):
         firstname_field = self.page.locator(loc.firstname_field_loc)
         lastname_field = self.page.locator(loc.lastname_field_loc)
         email_field = self.page.locator(loc.email_field_loc)
