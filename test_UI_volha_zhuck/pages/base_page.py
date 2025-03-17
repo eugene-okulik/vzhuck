@@ -14,7 +14,7 @@ class BasePage:
         else:
             raise NotImplementedError(
                 "Page can't be opened for this page class"
-                )
+            )
 
     def find(self, locator):
         return self.page.locator(locator)
